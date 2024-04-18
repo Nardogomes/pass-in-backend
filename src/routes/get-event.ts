@@ -12,16 +12,16 @@ export async function getEvent(app: FastifyInstance) {
           eventId: z.string().uuid(),
         }),
         response: {
-          200: {
+          200: z.object({
             event: z.object({
               id: z.string().uuid(),
               title: z.string(),
               slug: z.string(),
-              datails: z.string().nullable(),
+              details: z.string().nullable(),
               maximumAttendees: z.number().int().nullable(),
               attendeesAmount: z.number().int(),
             }),
-          },
+          }),
         },
       },
     },
